@@ -13,10 +13,10 @@ function bfs(graph, node) {
     const queue = [node]
 
     while(queue.length > 0) {
-        const current = queue.pop()
+        const current = queue.shift()
         console.log(current)
         graph[current].forEach(elem => {
-            queue.unshift(elem)
+            queue.push(elem)
         })
     }
 }
