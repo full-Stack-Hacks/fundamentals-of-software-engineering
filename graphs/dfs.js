@@ -22,4 +22,5 @@ function depthFirstPrint(graph, node) {
     }
 }
 
+// Calling the function
 depthFirstPrint(graph, 'a')
