@@ -9,7 +9,7 @@ const graph = {
     f: []
 }
 
-function depthFirstPrint(graph, node) {
+function depthFirstPrintIterative(graph, node) {
     const stack = [node]
     
     while(stack.length > 0) {
@@ -22,4 +22,15 @@ function depthFirstPrint(graph, node) {
     }
 }
 
-depthFirstPrint(graph, 'a')
+function depthFirstRecursive(graph, node) {
+    console.log(node)
+    graph[node].forEach(elem => {
+        depthFirstRecursive(graph, elem)
+    })
+}
+
+
+
+// Calling the function
+depthFirstPrintIterative(graph, 'a')
+depthFirstRecursive(graph, 'a')
