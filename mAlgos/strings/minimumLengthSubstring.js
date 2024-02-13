@@ -16,18 +16,55 @@ const str = 'abcdef'
 const target = 'fb'
 
 function minimumSubstring(str, target) {
-    const obj = {}
-    let left = 0, right = 0
-
-    for(let i = 0; i < target.length; i++) {
-        const current = target[i]
-        obj[current] ? obj[current]++ : obj[current] = 1
+    // Create a frequency map for characters in target
+    let targetMap = {};
+    for (let char of target) {
+        if (targetMap[char]) {
+            targetMap[char]++;
+        } else {
+            targetMap[char] = 1;
+        }
     }
 
-    while(right < str.length) {
-        console.log(str[right])
-        right++
+    // Initialize pointers and variables to track the minimum window
+    let left = 0, right = 0, minLen = Infinity, counter = target.length;
+
+    while (right < str.length) {
+        // If the current character is in target, decrease the counter
+        if (targetMap[str[right]] > 0) {
+            counter--;
+        }
+        // Always decrease the character count in the map
+        if (targetMap[str[right]] !== undefined) {
+            targetMap[str[right]]--;
+        }
+        right++;
+
+        // When all characters in target are within the window
+        while (counter === 0) {
+            // Update the minimum window size
+            if (right - left < minLen) {
+                minLen = right - left;
+            }
+            // Try to minimize the window by moving the left pointer
+            // If the current character is in target, increase the counter
+            if (targetMap[str[left]] === 0) {
+                counter++;
+            }
+            // Always increase the character count in the map
+            if (targetMap[str[left]] !== undefined) {
+                targetMap[str[left]]++;
+            }
+            left++;
+        }
     }
 
+    // If no window was found, return -1
+    if (minLen === Infinity) {
+        return -1;
+    }
+
+    // Return the minimum window size
+    return minLen;
 }
 minimumSubstring(str, target)
