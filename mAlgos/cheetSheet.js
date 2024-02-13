@@ -16,13 +16,11 @@ function makeObj(arr) {
 
 function sortedAndDistinct(arr1, arr2) {
     const obj = makeObj(arr1)
-
     return arr2.filter((elem) => {
         if(obj[elem]) {
             return elem
         }
     })  
-
 }
 
 const arr2 = [43,55,66,77,3]
