@@ -22,31 +22,75 @@
 // For index 4 - [2]
 // So, the answer for the above input is [1, 3, 1, 5, 1]
 
-const arr = [3,4,1,6,2]
-// [ 1, 3, 1, 5, 1 ]
-
-function testing(arr) {
-    const output = []
+const workman = (arr) => {
+    let count = 1
+    const result = []
     
-
     for(let i = 0; i < arr.length; i++) {
-        let left = i - 1
-        // let right = i + 1
-        let count = 1
-        // trace right
-        while(arr[i] > arr[right] && right < arr.length) {
+        let right = i + 1
+        let left  = i - 1
+        const current = arr[i]
+        while(current > arr[right]) {
             count++
             right++
         }
 
-        while(arr[i] > arr[left] && left >= 0) {
-            count++ 
+        while(current > arr[left]) {
+            count++
             left--
         }
-        output.push(count)
+        result.push(count)
+        count = 1
     }
-    return output
-} 
+    return result
+}
 
-const result = testing(arr)
-console.log(result)
+
+
+// const arr = [3,4,1,6,2]
+// const result = workman(arr)
+// console.log(result)
+// [ 1, 3, 1, 5, 1 ]
+
+// function testing(arr) {
+//     const output = []
+    
+
+//     for(let i = 0; i < arr.length; i++) {
+//         let left = i - 1
+//         // let right = i + 1
+//         let count = 1
+//         // trace right
+//         while(arr[i] > arr[right] && right < arr.length) {
+//             count++
+//             right++
+//         }
+
+//         while(arr[i] > arr[left] && left >= 0) {
+//             count++ 
+//             left--
+//         }
+//         output.push(count)
+//     }
+//     return output
+// } 
+
+// const result = testing(arr)
+// console.log(result)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
