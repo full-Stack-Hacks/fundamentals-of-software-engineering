@@ -31,3 +31,24 @@ Given a string and a set of characters, find the smallest substring that contain
      - The count of the character at the `left` pointer in `obj` is incremented and the `left` pointer is moved one step to the right.
 
 4. If `min` is still Infinity at the end of the function (meaning no valid substring was found), the function returns -1. Otherwise, it returns `min`, which is the length of the shortest substring that contains all the characters in the target string.
+
+
+# Minimum Substring Problem
+
+## Problem Statement
+
+You're a detective with a coded message (a string) and a clue (a set of characters). Your task is to find the shortest segment of the message that contains all the letters in the clue.
+
+## Solution Explanation
+
+1. **Creating a Map (Hashing)**: Make a checklist of the clue letters. Each letter is a key in the map, and its value is how many times it appears in the clue.
+
+2. **Sliding Window**: Start with a window that only includes the first letter of the message. This window is defined by two pointers, `left` and `right`.
+
+3. **Expanding the Window**: Move the `right` pointer to the right, expanding the window. Each time you move the `right` pointer, check if the current letter is in your checklist. If it is, mark it off and decrease your overall count of letters you need to find.
+
+4. **Contracting the Window**: Once you've found all the letters (your count is 0), start moving the `left` pointer to the right, contracting the window. Each time you move the `left` pointer, check if the current letter is in your checklist. If it is, add it back to your checklist and increase your overall count of letters you need to find.
+
+5. **Finding the Minimum Window**: While contracting the window, keep track of the size of the window. If the current window is smaller than the smallest window you've found so far, update your smallest window.
+
+6. **Repeating the Process**: Repeat the process of expanding and contracting the window until the `right` pointer has gone through the entire message. The size of the smallest window you've found is the length of the smallest substring that contains all the characters in the clue.
