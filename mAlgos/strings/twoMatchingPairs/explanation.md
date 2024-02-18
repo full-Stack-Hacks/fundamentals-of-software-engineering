@@ -31,3 +31,15 @@ Explanation: Using 0-based indexing, and with `i = 1` and `j = 3`, `s[1]` and `s
 The output should be `1`.
 
 Explanation: Two indices have to be swapped, regardless of which two it is, only one letter will remain the same. If `i = 0` and `j=1`, `s[0]` and `s[1]` are swapped, making `s = "nmo"`, which shares only "o" with `t`.
+
+## Solution Techniques
+
+To solve this problem, you would use a combination of string manipulation, comparison operations, and decision-making logic. Here's a step-by-step breakdown:
+
+1. **Counting Matches**: Go through the strings `s` and `t` and count the number of matching pairs. This can be done by comparing the characters at each index of `s` and `t`. If the characters are the same, then it's a match.
+
+2. **Identifying Swap Candidates**: Identify the characters in `s` that could be swapped to increase the number of matches. This involves finding characters in `s` that are not currently a match with `t`, but could be a match if they were in a different position.
+
+3. **Choosing the Best Swap**: Once you've identified potential swap candidates, decide which swap would result in the maximum number of matches. This involves comparing the potential matches that could be gained from each swap and choosing the best one.
+
+4. **Handling Edge Cases**: Handle the edge case where `s` and `t` are already identical. In this case, swapping any two characters in `s` would actually decrease the number of matches, so you need to account for this in your solution.
